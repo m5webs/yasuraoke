@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Yasuraoke</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Playwrite DE LA Guides' rel='stylesheet'>
+    <script src="static/js/gm.js"></script>
+</head>
+
+<body>
+    <div id="bg"></div>
+    <div id="game_screen" style="display: none;">
+        <div id="lanes">
+            <div id="lane1" class="lane">
+                <div id="key1" class="key"></div>
+                <div class="lane_end"></div>
+            </div>
+            <div id="lane2" class="lane">
+                <div id="key2" class="key"></div>
+                <div class="lane_end"></div>
+            </div>
+            <div id="lane3" class="lane">
+                <div id="key3" class="key"></div>
+                <div class="lane_end"></div>
+            </div>
+            <div id="lane4" class="lane">
+                <div id="key4" class="key"></div>
+                <div class="lane_end"></div>
+            </div>
+        </div>
+        <div id="help">
+            <div id="lives"></div>
+            <div id="help_text">Press the corresponding key when the character reaches the line.</div>
+        </div>
+        <div id="score_box">
+            <div id="score"></div>
+            <div id="graveyard"></div>
+            <div id="yasu_box"></div>
+        </div>
+        <div id="game_over_overlay"></div>
+    </div>
+    <div id="main_menu">
+        <div id="title">Yasu's_Karaoke</div>
+        <div id="start_button">
+            <button id="start_btn" onclick="start_button_handler()">Start</button>
+        </div>
+        <div id="highscore"></div>
+    </div>
+</body>
+
+</html>

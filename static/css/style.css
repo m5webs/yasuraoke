@@ -1,0 +1,78 @@
+/**
+* CSS Document
+* Lanes are from right to left
+*/
+
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e0d282;
+}
+
+
+/* Main menu */
+/* Menus are semitransparent */
+
+#main_menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Size is 85% of the viewport */
+    width: 85vw;
+    height: 85vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    /* Center the menu elements */
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+}
+
+
+
+#title {
+    font-size: 7em;
+    margin-bottom: 20px;
+    font-family: 'Playwrite DE LA Guides';
+    /* Boldness */
+    font-weight: bold;
+    /* Text color */
+    color: #333;
+}
+
+/* Game screen */
+
+#lanes {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lane {
+    position: relative;
+    width: 1300px;
+    height: 150px;
+    margin: 10px 0;
+    border: 1px solid #131313;
+    background-color: #f5f5f5;
+}
+
+.lane_end {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    background-color: #f5f5f5;
+}
