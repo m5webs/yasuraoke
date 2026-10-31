@@ -3,6 +3,29 @@
 * Lanes are from right to left
 */
 
+:root {
+    /*Only for notation*/
+    --max_game_width: 1600px;
+    --max_game_height: 900px;
+
+    /*Hardcoded*/
+    --score_box_height: 250px;
+    --game_columns_height: 650px;
+    --lane_height: 150px;
+    --help_box_height: 150px;
+
+    --yasu_box_width: 250px;
+    --keys_width: 150px;
+    --lane_width: 1300px;
+
+    --score_box_margin: 20px 0px;
+    --lane_margin: 10px 0px;
+    --help_box_margin: 20px 0px;
+}
+
+body {
+    cursor: url('../imgs/smile.png'), auto;
+}
 
 #bg {
     position: fixed;
@@ -35,8 +58,6 @@
     align-items: center;
 }
 
-
-
 #title {
     font-size: 7em;
     margin-bottom: 20px;
@@ -47,32 +68,223 @@
     color: #333;
 }
 
+
+#highscore {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: 'Pixelify Sans';
+    color: #333;
+}
+
+#start_btn {
+    font-size: 2em;
+    padding: 10px 20px;
+    background-color: #49b0c2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: url('../imgs/smile.png'), pointer;
+}
+
+#start_btn:hover {
+    background-color: #2d8b9a;
+}
+
+#how_to_play {
+    font-size: 1.5em;
+    margin-top: 20px;
+    font-family: 'Pixelify Sans';
+    color: #333;
+}
+
 /* Game screen */
 
-#lanes {
+#game_screen {
+    /* game_screen has rows (top to bottom): score, game, help */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
-    top: 300px;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    /* Fixed position and size */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#score_box {
+    width: 100%;
+    height: var(--score_box_height);
+    margin: var(--score_box_margin);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#score_label {
+    /*Score overlayed with graveyard*/
+    position: absolute;
+    z-index: 9999;
+    font-size: calc(var(--score_box_height) * 0.7);
+    font-family: 'Pixelify Sans';
+    color: #47a7df;
+}
+
+#game_columns {
+    /* game_columns has columns (left to right): yasu_box, keys, lanes */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: var(--game_columns_height);
+}
+
+#yasu_box {
+    width: var(--yasu_box_width);
+    height: var(--game_columns_height);
+    margin: var(--lane_margin);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#yasu {
+    width: 100%;
+    height: auto;
+}
+
+#lanes {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .lane {
+    /* position: relative is needed for absoulte positioning of children */
     position: relative;
-    width: 1300px;
-    height: 150px;
-    margin: 10px 0;
-    border: 1px solid #131313;
-    background-color: #f5f5f5;
+    width: var(--lane_width);
+    height: var(--lane_height);
+    margin: var(--lane_margin);
+    border-top: 1px solid #131313;
+    border-bottom: 1px solid #131313;
+    background-color: #f5f5f51a;
+    display: flex;
+    flex-direction: row;
+}
+
+.enemy {
+    position: absolute;
+    right: 0%;
+    bottom: 0;
+    width: var(--lane_height);
+    height: 100%;
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+    z-index: 999;
+}
+
+
+.enemy img {
+    height: 100%;
+    width: 100%;
 }
 
 .lane_end {
+    /* lane_end is a SQUARE of max_height to maintain equal spacing with enemies, but inside has an actual line in the left */
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 10px;
+    right: 80%;
+    width: var(--lane_height);
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+}
+
+.line {
+    width: 10%;
     height: 100%;
     background-color: #f5f5f5;
+}
+
+#keys_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keybox {
+    width: var(--keys_width);
+    height: var(--lane_height);
+    margin: var(--lane_margin);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key {
+    font-size: 2em;
+    font-family: 'Pixelify Sans';
+    color: #2d378b;
+    background-color: #8fb5ee;
+    transition: 0.1s ease;
+    padding: 10px 20px;
+}
+
+.pressed_key {
+    background-color: #2d378b;
+    color: #8fb5ee;
+    padding: 7px 16px;
+}
+
+
+
+#help_box {
+    width: 100%;
+    height: var(--help_box_height);
+    margin: var(--help_box_margin);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.life {
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+}
+
+.lost_life {
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+/* Shaking lives animation */
+@keyframes shake {
+
+    /* Proportion 3:1 3 secs static for each sec shaking */
+    30% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    60% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.shaky {
+    animation: shake 1s ease-in-out;
+    animation-iteration-count: infinite;
 }

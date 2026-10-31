@@ -1,0 +1,37 @@
+-----------------------------
+|          |Score|          |   
+|          |Grave|          |
+|---------------------------|
+|     |A|     Lane1         |
+|-----|W|     Lane2         |
+|YasuB|                     |
+|-----|S|     Lane3         |
+|     |D|     Lane4         |
+|---------------------------|
+|           |Lives|         |
+|           |HelpT|         |
+-----------------------------
+
+Separation by levels
+Sizes, suppose valid in 1920x1080 res
+
+- game_screen (rows)                1600x900
+    - score_box (rows)                  1600x150
+        - score                             1600x150    (overlayed on graveyard)
+        - graveyard                         1600x150
+    - game_columns (columns)            1600x650
+        - yasu_box                          400x650
+            - yasu                              400x?
+        - keys_box (rows)                   200x650
+            - key1_box                          
+            - key2_box
+            - key3_box
+            - key4_box
+        - lanes (rows)
+            - lane1
+            - lane2
+            - lane3
+            - lane4
+    - help_box (rows)                   1600x100
+        - lives
+        - help_text

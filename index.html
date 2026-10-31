@@ -1,50 +1,90 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>Yasuraoke</title>
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Playwrite DE LA Guides' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Pixelify Sans' rel='stylesheet'>
     <script src="static/js/gm.js"></script>
 </head>
 
 <body>
     <div id="bg"></div>
     <div id="game_screen" style="display: none;">
-        <div id="lanes">
-            <div id="lane1" class="lane">
-                <div id="key1" class="key"></div>
-                <div class="lane_end"></div>
-            </div>
-            <div id="lane2" class="lane">
-                <div id="key2" class="key"></div>
-                <div class="lane_end"></div>
-            </div>
-            <div id="lane3" class="lane">
-                <div id="key3" class="key"></div>
-                <div class="lane_end"></div>
-            </div>
-            <div id="lane4" class="lane">
-                <div id="key4" class="key"></div>
-                <div class="lane_end"></div>
-            </div>
-        </div>
-        <div id="help">
-            <div id="lives"></div>
-            <div id="help_text">Press the corresponding key when the character reaches the line.</div>
-        </div>
         <div id="score_box">
-            <div id="score"></div>
-            <div id="graveyard"></div>
-            <div id="yasu_box"></div>
+            <div id="score_label">
+                Score: <span id="score">0</span>
+            </div>
+            <div id="graveyard">
+            </div>
+        </div>
+        <div id="game_columns">
+            <div id="yasu_box">
+                <img id="yasu" src="static/imgs/yasu.gif"></img>
+            </div>
+            <div id="keys_box">
+                <div id="keybox1" class="keybox">
+                    <div id="key_a" class="key">A</div>
+                </div>
+                <div id="keybox2" class="keybox">
+                    <div id="key_s" class="key">S</div>
+                </div>
+                <div id="keybox3" class="keybox">
+                    <div id="key_d" class="key">D</div>
+                </div>
+                <div id="keybox4" class="keybox">
+                    <div id="key_f" class="key">F</div>
+                </div>
+            </div>
+            <div id="lanes">
+                <div id="lane1" class="lane">
+                    <div class="lane_end">
+                        <div class="line" id="lane1_end"></div>
+                    </div>
+                </div>
+                <div id="lane2" class="lane">
+                    <div class="lane_end">
+                        <div class="line" id="lane2_end"></div>
+                    </div>
+                </div>
+                <div id="lane3" class="lane">
+                    <div class="lane_end">
+                        <div class="line" id="lane3_end"></div>
+                    </div>
+                </div>
+                <div id="lane4" class="lane">
+                    <div class="lane_end">
+                        <div class="line" id="lane4_end"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="help_box">
+            <div id="lives">
+                <img id="life1" class="life shaky" src="static/imgs/heart_full.svg"></img>
+                <img id="life2" class="life shaky" src="static/imgs/heart_full.svg"></img>
+                <img id="life3" class="life shaky" src="static/imgs/heart_full.svg"></img>
+            </div>
         </div>
         <div id="game_over_overlay"></div>
     </div>
     <div id="main_menu">
-        <div id="title">Yasu's_Karaoke</div>
+        <div id="title">Yasu's_Nichijou</div>
+        <div id="highscore">
+            High Score: <span id="max_score">0</span>
+        </div>
         <div id="start_button">
             <button id="start_btn" onclick="start_button_handler()">Start</button>
         </div>
-        <div id="highscore"></div>
+        <div id="how_to_play">
+            <p>Welcome to the Karaoke Game!</p>
+            <p>To play press start.</p>
+            <p>Use the A, S, D, and F keys to time the characters.</p>
+            <p>Do not press the corresponding key until a character reaches the line.</p>
+            <p>Pressing the key too early will cost you a life.</p>
+            <p>If you cannot see the page correctly, try zooming in or out.</p>
+        </div>
     </div>
 </body>
 
